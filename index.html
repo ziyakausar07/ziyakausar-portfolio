@@ -170,6 +170,30 @@
             position: relative;
             z-index: 1;
             max-width: 700px;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-image {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #00bcd4;
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            flex: 1;
         }
 
         .hero-title {
@@ -581,6 +605,16 @@
                 font-size: 0.85rem;
             }
 
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-image {
+                width: 150px;
+                height: 150px;
+            }
+
             .hero-title {
                 font-size: 2.2rem;
             }
@@ -629,6 +663,11 @@
             .hero {
                 padding: 80px 15px 80px;
                 min-height: 70vh;
+            }
+
+            .hero-image {
+                width: 120px;
+                height: 120px;
             }
 
             .hero-title {
@@ -686,13 +725,18 @@
 <!-- Hero Header -->
 <header class="hero">
     <div class="hero-content">
-        <h1 class="hero-title">Ziyakausar J Tamboli</h1>
-        <p class="hero-subtitle">Master's in Computer Applications | Software Developer</p>
-        <p class="hero-description">Passionate about building efficient, scalable applications with modern technologies</p>
+        <div class="hero-image">
+            <img src="photo.jpg" alt="Ziyakausar J Tamboli">
+        </div>
+        <div class="hero-text">
+            <h1 class="hero-title">Ziyakausar J Tamboli</h1>
+            <p class="hero-subtitle">Master's in Computer Applications | Software Developer</p>
+            <p class="hero-description">Passionate about building efficient, scalable applications with modern technologies</p>
 
-        <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary">VIEW MY WORK</a>
-            <a href="mailto:ziyakaus07@gmail.com" class="btn btn-secondary">GET IN TOUCH</a>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">VIEW MY WORK</a>
+                <a href="mailto:ziyakaus07@gmail.com" class="btn btn-secondary">GET IN TOUCH</a>
+            </div>
         </div>
     </div>
 </header>
