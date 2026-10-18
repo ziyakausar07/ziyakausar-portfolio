@@ -1,0 +1,445 @@
+/* ==========================================================================
+   PORTFOLIO RESPONSIVE STYLESHEET
+   Ensures seamless adaptability across mobile (375px+), tablet (768px+),
+   and desktop (1028px+) viewports with WCAG touch-target compliance.
+   ========================================================================== */
+
+/* ---------------------------------------------------------
+   1. Large Desktop Screens (Min-width: 1440px)
+   --------------------------------------------------------- */
+@media screen and (min-width: 1440px) {
+  :root {
+    --max-width: 1320px;
+  }
+
+  .hero-name {
+    font-size: 3.8rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+/* ---------------------------------------------------------
+   2. Desktop & Small Laptops (Max-width: 1199px)
+   --------------------------------------------------------- */
+@media screen and (max-width: 1199px) {
+  .hero-name {
+    font-size: 2.9rem;
+  }
+
+  .hero-grid {
+    gap: 36px;
+  }
+
+  .deployments-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-wide {
+    grid-column: span 2;
+  }
+}
+
+/* ---------------------------------------------------------
+   3. Tablets (Max-width: 991px)
+   --------------------------------------------------------- */
+@media screen and (max-width: 991px) {
+  :root {
+    --nav-height: 70px;
+  }
+
+  .section {
+    padding: 76px 0;
+  }
+
+  .section-title {
+    font-size: 2.1rem;
+  }
+
+  /* Navigation Drawer for Tablet/Mobile */
+  .mobile-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: var(--bg-card);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px 32px 40px 32px;
+    gap: 16px;
+    z-index: 999;
+    transition: right var(--transition-normal);
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.05rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  /* Hero Layout */
+  .hero {
+    padding: 105px 0 64px 0;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 46px;
+  }
+
+  .hero-content {
+    align-items: center;
+    order: 1;
+  }
+
+  .hero-visual {
+    order: 2;
+    width: 100%;
+  }
+
+  .code-studio-window {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    justify-content: center;
+  }
+
+  .hero-bio {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-deploy-ticker {
+    align-items: center;
+  }
+
+  .ticker-chips {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-socials {
+    justify-content: center;
+  }
+
+  /* Bento Layout for Tablet */
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-wide {
+    grid-column: span 1;
+  }
+
+  /* Deployments Grid for Tablet */
+  .deployments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Projects Layout */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Certifications & Activities */
+  .two-col-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Contact Layout */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------------------------------------------------------
+   4. Landscape Mobiles & Phablets (Max-width: 767px)
+   --------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-name {
+    font-size: 2.4rem;
+  }
+
+  .hero-title {
+    font-size: 1.15rem;
+  }
+
+  .deploy-metrics-strip {
+    flex-direction: column;
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .metric-divider {
+    width: 60%;
+    height: 1px;
+  }
+
+  .bento-two-col {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .skills-filter-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .skills-search-box {
+    min-width: auto;
+    max-width: 100%;
+  }
+
+  .skills-category-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .education-timeline {
+    padding-left: 28px;
+  }
+
+  .education-timeline::before {
+    left: 8px;
+  }
+
+  .timeline-dot {
+    left: -28px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-form-container {
+    padding: 24px 18px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .cmd-k-btn .cmd-kbd {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------
+   5. Small Mobile Phones (Max-width: 480px, including 375px)
+   --------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  :root {
+    --nav-height: 66px;
+  }
+
+  .brand-logo {
+    font-size: 1.05rem;
+  }
+
+  .brand-logo .logo-mark {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+
+  .deployed-status-badge {
+    display: none; /* Keep navbar clean on small mobile */
+  }
+
+  .hero-name {
+    font-size: 2rem;
+  }
+
+  .hero-greeting {
+    font-size: 1.05rem;
+  }
+
+  .hero-title {
+    font-size: 1rem;
+  }
+
+  .hero-bio {
+    font-size: 0.96rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .deploy-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .deploy-actions .btn {
+    width: 100%;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .project-actions .btn {
+    width: 100%;
+  }
+
+  .studio-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .studio-badge {
+    display: none;
+  }
+
+  .studio-avatar-dock {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .dock-badge {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.94rem;
+  }
+
+  .bento-card {
+    padding: 22px 18px;
+  }
+
+  .cgpa-number {
+    font-size: 2.8rem;
+  }
+
+  .cert-card, .activity-card {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .project-card {
+    padding: 20px 16px;
+  }
+
+  .floating-back-top {
+    bottom: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .cmd-modal-backdrop {
+    padding: 40px 12px;
+  }
+}
+
+/* ---------------------------------------------------------
+   6. Accessibility & Motion Preferences
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-glow-1,
+  .hero-glow-2,
+  .ambient-aurora-1,
+  .ambient-aurora-2,
+  .status-dot,
+  .status-pulse-dot,
+  .live-dot-green,
+  .wave-hand {
+    animation: none !important;
+  }
+}

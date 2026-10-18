@@ -1,1048 +1,1479 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziyakausar J Tamboli | Professional Portfolio</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* ===== ROOT VARIABLES ===== */
-        :root {
-            --primary-color: #0d47a1;
-            --secondary-color: #1565c0;
-            --accent-color: #00bcd4;
-            --light-bg: #f0f4f8;
-            --white: #ffffff;
-            --dark-text: #1a1a1a;
-            --gray-text: #555555;
-            --shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--light-bg);
-            color: var(--dark-text);
-            line-height: 1.6;
-        }
-
-        /* ===== NAVIGATION BAR ===== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(13, 71, 161, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #00bcd4;
-            letter-spacing: 2px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .nav-link::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: #00bcd4;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            padding: 0.6rem 1.5rem;
-            border: 2px solid #00bcd4;
-            border-radius: 25px;
-            transition: var(--transition);
-        }
-
-        .nav-cta:hover {
-            background: #00bcd4;
-            color: #0d47a1;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--white);
-            transition: var(--transition);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            margin-top: 60px;
-            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #0277bd 100%);
-            color: var(--white);
-            padding: 120px 20px 100px;
-            text-align: center;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgb(0, 213, 255);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgb(0, 213, 255);
-            border-radius: 50%;
-            bottom: -50px;
-            left: -50px;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .hero-image {
-            flex-shrink: 0;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid #00bcd4;
-            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
-            animation: slideDown 0.8s ease;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-            animation: slideDown 0.8s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 1;
-            color: #ffffff;
-            animation: slideDown 0.8s ease 0.1s backwards;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            opacity: 1;
-            color: #ffffff;
-            line-height: 1.8;
-            animation: slideDown 0.8s ease 0.2s backwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideDown 0.8s ease 0.3s backwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(30px);
-            }
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            display: inline-block;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: #00bcd4;
-            color: #0d47a1;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary-color);
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            max-width: 1100px;
-            background: var(--white);
-            margin: 60px auto;
-            padding: 60px 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #0d47a1;
-            position: relative;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        h2::before {
-            content: "";
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #0d47a1, #00bcd4);
-            position: absolute;
-            left: 0;
-            bottom: -15px;
-            border-radius: 2px;
-        }
-
-        h3 {
-            color: #0d47a1;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            font-size: 1rem;
-            color: var(--gray-text);
-            line-height: 1.8;
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: var(--gray-text);
-        }
-
-        /* ===== SKILLS SECTION ===== */
-        .skills-category {
-            margin-bottom: 3rem;
-        }
-
-        .skills-category h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #0d47a1;
-        }
-
-        .skill-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-badge {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            background: linear-gradient(135deg, #0d47a1, #1565c0);
-            color: var(--white);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
-        }
-
-        .skill-badge:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(13, 71, 161, 0.45);
-        }
-
-        /* ===== PROJECTS SECTION ===== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid #e8e8e8;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(13, 71, 161, 0.25);
-            border-color: #1565c0;
-        }
-
-        .project-header {
-            margin-bottom: 1rem;
-        }
-
-        .project-header h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        .project-header i {
-            font-size: 1.4rem;
-            color: #1565c0;
-        }
-
-        .project-description {
-            font-size: 0.95rem;
-            color: var(--gray-text);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            display: inline-block;
-            padding: 0.4rem 0.9rem;
-            background: rgba(13, 71, 161, 0.15);
-            color: #0d47a1;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(13, 71, 161, 0.4);
-        }
-
-        /* ===== EDUCATION SECTION ===== */
-        .education-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .education-item {
-            padding: 2rem;
-            background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
-            border-left: 5px solid #0d47a1;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-
-        .education-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.2);
-        }
-
-        .education-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-detail {
-            font-size: 0.95rem;
-            color: #1565c0;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .education-status {
-            font-size: 0.9rem;
-            color: var(--gray-text);
-            font-style: italic;
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact-section {
-            text-align: center;
-        }
-
-        .contact-intro {
-            font-size: 1.1rem;
-            color: var(--gray-text);
-            margin-bottom: 3rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            padding: 2rem;
-            background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--dark-text);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-8px);
-            border-color: #1565c0;
-            box-shadow: 0 12px 30px rgba(13, 71, 161, 0.25);
-        }
-
-        .contact-card i {
-            font-size: 2.5rem;
-            color: #1565c0;
-            margin-bottom: 1rem;
-        }
-
-        .contact-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card p {
-            font-size: 0.95rem;
-            color: var(--gray-text);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: linear-gradient(135deg, #0d47a1, #1565c0);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .footer-content p {
-            color: var(--white);
-            margin: 0;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background: #00bcd4;
-            transform: translateY(-5px);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        .hidden {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        .show {
-            animation: slideInUp 0.8s ease forwards;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.8rem 0;
-            }
-
-            .nav-container {
-                padding: 0 1rem;
-            }
-
-            .nav-menu {
-                gap: 1.5rem;
-                font-size: 0.85rem;
-            }
-
-            .hero-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .hero-image {
-                width: 150px;
-                height: 150px;
-            }
-
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .section {
-                margin: 40px 15px;
-                padding: 40px 25px;
-                border-radius: 12px;
-            }
-
-            h2 {
-                font-size: 1.7rem;
-                margin-bottom: 30px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 80px 15px 80px;
-                min-height: 70vh;
-            }
-
-            .hero-image {
-                width: 120px;
-                height: 120px;
-            }
-
-            .hero-title {
-                font-size: 1.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .section {
-                padding: 30px 18px;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .skill-badges {
-                gap: 0.6rem;
-            }
-
-            .skill-badge {
-                padding: 0.5rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .contact-intro {
-                font-size: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Primary Meta Tags -->
+  <title>Ziyakausar J Tamboli | MCA Student & Full-Stack Developer (Live Deployed)</title>
+  <meta name="title" content="Ziyakausar J Tamboli | MCA Student & Full-Stack Developer">
+  <meta name="description" content="Official portfolio of Ziyakausar J Tamboli, MCA student at Chetan Business School, BCA graduate (9.04 CGPA). Full-stack web developer & ML engineer with live production deployments on Vercel, Render & GitHub Pages.">
+  <meta name="keywords" content="Ziyakausar Tamboli, Portfolio, MCA Student, Full-Stack Developer, Web Developer, React, Python, Machine Learning, Deployed Projects, Hubli">
+  <meta name="author" content="Ziyakausar J Tamboli">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ziyakausar07.github.io/ziyakausar-portfolio/">
+  <meta property="og:title" content="Ziyakausar J Tamboli | Portfolio & Live Deployments">
+  <meta property="og:description" content="MCA student & Full-Stack Developer. Check out live deployed web applications, machine learning projects, and academic achievements.">
+  <meta property="og:image" content="assets/images/profile.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- Google Fonts: Inter, Poppins & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+  <!-- Ambient Tech Grid & Glow Backdrop -->
+  <div class="cyber-bg-grid" aria-hidden="true"></div>
+  <div class="ambient-aurora-1" aria-hidden="true"></div>
+  <div class="ambient-aurora-2" aria-hidden="true"></div>
 
-<!-- Navigation Bar -->
-<nav class="navbar">
-    <div class="nav-container">
-        <div class="logo">ZT</div>
-        <ul class="nav-menu">
-            <li><a href="#about" class="nav-link">ABOUT</a></li>
-            <li><a href="#skills" class="nav-link">SKILLS</a></li>
-            <li><a href="#projects" class="nav-link">PROJECTS</a></li>
-            <li><a href="#education" class="nav-link">EDUCATION</a></li>
-            <li><a href="#contact" class="nav-link nav-cta">CONTACT</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</nav>
+  <!-- Accessible Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- Hero Header -->
-<header class="hero">
-    <div class="hero-content">
-        <div class="hero-image">
-            <img src="photo.jpg" alt="Ziyakausar J Tamboli">
-        </div>
-        <div class="hero-text">
-            <h1 class="hero-title">Ziyakausar J Tamboli</h1>
-            <p class="hero-subtitle">Master's in Computer Applications | Software Developer</p>
-            <p class="hero-description">Passionate about building efficient, scalable applications with modern technologies</p>
+  <!-- Header / Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" aria-label="Ziyakausar J Tamboli Home">
+        <span class="logo-mark">Z</span>
+        <span class="logo-text">Ziyakausar<span class="gradient-text">.dev</span></span>
+        <span class="deployed-status-badge" title="Portfolio is live on GitHub Pages">
+          <span class="status-pulse-dot"></span> Live
+        </span>
+      </a>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">VIEW MY WORK</a>
-                <a href="mailto:ziyakaus07@gmail.com" class="btn btn-secondary">GET IN TOUCH</a>
-            </div>
-        </div>
-    </div>
-</header>
-
-<section id="about" class="section">
-    <h2>ABOUT ME</h2>
-    <p class="about-text">
-        I'm a dedicated and motivated Master's student in Computer Applications with a strong foundation in software development and web technologies. With hands-on experience in multiple programming languages and frameworks, I specialize in building efficient, user-friendly applications that solve real-world problems. Passionate about continuous learning and tackling complex challenges.
-    </p>
-</section>
-
-<section id="skills" class="section">
-    <h2>TECHNICAL SKILLS</h2>
-    
-    <div class="skills-category">
-        <h3>Languages</h3>
-        <div class="skill-badges">
-            <span class="skill-badge">Java</span>
-            <span class="skill-badge">Python</span>
-            <span class="skill-badge">C</span>
-            <span class="skill-badge">C++</span>
-            <span class="skill-badge">JavaScript</span>
-        </div>
-    </div>
-
-    <div class="skills-category">
-        <h3>Frontend Development</h3>
-        <div class="skill-badges">
-            <span class="skill-badge">HTML5</span>
-            <span class="skill-badge">CSS3</span>
-            <span class="skill-badge">React.js</span>
-            <span class="skill-badge">Bootstrap</span>
-        </div>
-    </div>
-
-    <div class="skills-category">
-        <h3>Databases & Backend</h3>
-        <div class="skill-badges">
-            <span class="skill-badge">MySQL</span>
-            <span class="skill-badge">MongoDB</span>
-            <span class="skill-badge">Oracle</span>
-            <span class="skill-badge">JDBC</span>
-        </div>
-    </div>
-
-    <div class="skills-category">
-        <h3>Other Technologies</h3>
-        <div class="skill-badges">
-            <span class="skill-badge">Data Structures</span>
-            <span class="skill-badge">Operating Systems</span>
-            <span class="skill-badge">Software Testing</span>
-            <span class="skill-badge">Power BI</span>
-            <span class="skill-badge">Git/GitHub</span>
-        </div>
-    </div>
-</section>
-
-<section id="projects" class="section">
-    <h2>FEATURED PROJECTS</h2>
-    <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-header">
-                <h3><i class="fas fa-clinic-medical"></i> Orphanage Management System</h3>
-            </div>
-            <p class="project-description">
-                Centralized digital system to manage children records, donations, volunteers, and expenses. Significantly reduced paperwork and improved overall data accuracy.
-            </p>
-            <div class="project-tech">
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">MySQL</span>
-                <span class="tech-tag">JDBC</span>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <h3><i class="fas fa-utensils"></i> Online Food Delivery System</h3>
-            </div>
-            <p class="project-description">
-                Full-featured web application where users can browse restaurants, place orders, and track deliveries in real-time with secure payment integration.
-            </p>
-            <div class="project-tech">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">React.js</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">Node.js</span>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <h3><i class="fas fa-hotel"></i> Hotel Room Reservation System</h3>
-            </div>
-            <p class="project-description">
-                Java-based application for room availability checking, booking management, and reservation handling with comprehensive management features.
-            </p>
-            <div class="project-tech">
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">MySQL</span>
-                <span class="tech-tag">Oracle</span>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <h3><i class="fas fa-chart-line"></i> Supermarket Sales Dashboard</h3>
-            </div>
-            <p class="project-description">
-                Interactive Power BI dashboard visualizing sales trends, inventory status, and customer behavior with actionable business insights.
-            </p>
-            <div class="project-tech">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">Data Analysis</span>
-                <span class="tech-tag">SQL</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="education" class="section">
-    <h2>EDUCATION</h2>
-    <div class="education-timeline">
-        <div class="education-item">
-            <h3>Master of Computer Applications (MCA)</h3>
-            <p class="education-detail">Chetan Business School, Hubli</p>
-            <p class="education-status">Pursuing</p>
-        </div>
-        <div class="education-item">
-            <h3>Bachelor of Computer Applications (BCA)</h3>
-            <p class="education-detail">KLE Technological University</p>
-            <p class="education-status">2022 – 2025</p>
-        </div>
-        <div class="education-item">
-            <h3>Pre-University Course (PUC)</h3>
-            <p class="education-detail">Dr. R. B. Patil Mahesh PUC</p>
-            <p class="education-status">2020 – 2022</p>
-        </div>
-        <div class="education-item">
-            <h3>High School</h3>
-            <p class="education-detail">St. Paul’s English Medium School</p>
-            <p class="education-status">2017 – 2020</p>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="section contact-section">
-    <h2>GET IN TOUCH</h2>
-    <p class="contact-intro">I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
-    
-    <div class="contact-methods">
-        <a href="mailto:ziyakaus07@gmail.com" class="contact-card">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p>ziyakaus07@gmail.com</p>
+      <!-- Navigation Links -->
+      <nav id="nav-links" class="nav-links" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#deployments" class="nav-link nav-highlight">
+          <i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Deployments
         </a>
-        <a href="https://www.linkedin.com/in/ziyakausar-aa120b25b" target="_blank" class="contact-card">
-            <i class="fab fa-linkedin"></i>
-            <h3>LinkedIn</h3>
-            <p>Ziyakausar Tamboli</p>
-        </a>
-        <a href="https://github.com/ziyakausar07" target="_blank" class="contact-card">
-            <i class="fab fa-github"></i>
-            <h3>GitHub</h3>
-            <p>github.com/ziyakausar</p>
-        </a>
-    </div>
-</section>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
 
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2026 Ziyakausar J Tamboli. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/ziyakausar-aa120b25b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/ziyakausar07" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:ziyakaus07@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <!-- Right Actions (Terminal Cmd-K, Theme Toggle & Hamburger) -->
+      <div class="nav-actions">
+        <!-- Quick Command Palette Button -->
+        <button id="cmd-palette-toggle" class="cmd-k-btn" aria-label="Open Command Palette (Ctrl+K)" title="Developer Terminal (Ctrl + K)">
+          <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+          <span class="cmd-kbd">Ctrl+K</span>
+        </button>
+
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme" title="Toggle theme">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+
+        <button id="mobile-menu-toggle" class="mobile-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div id="nav-overlay" class="mobile-nav-overlay" aria-hidden="true"></div>
+
+  <!-- Main Content Wrapper -->
+  <main id="main-content">
+
+    <!-- =======================================================
+         1. HERO SECTION (INNOVATIVE DUAL DEVELOPER CONSOLE)
+         ======================================================= -->
+    <section id="home" class="hero" aria-label="Introduction">
+      <div class="hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow-2" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <!-- Hero Text & Details -->
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="status-dot"></span>
+            <span>🟢 Deployed Live • Open for Internships & SWE Roles</span>
+          </div>
+
+          <p class="hero-greeting"><span class="wave-hand">👋</span> Hello World, I'm</p>
+          <h1 class="hero-name">Ziyakausar J <span class="gradient-text">Tamboli</span></h1>
+          
+          <!-- Dynamic Animated Typewriter Headline -->
+          <h2 class="hero-title">
+            <span class="typewriter-prefix">I architect &amp; build </span>
+            <span class="typewriter-text gradient-text" id="typewriter-role">Full-Stack Web Applications</span>
+            <span class="typewriter-cursor">|</span>
+          </h2>
+
+          <p class="hero-bio">
+            MCA Candidate at Chetan Business School (CBS) &amp; BCA Graduate (<strong class="text-highlight">9.04 / 10 CGPA</strong>). Passionate about engineering production-ready web apps, scalable backend APIs, applied machine learning pipelines, and computer graphics engines — with projects deployed live on <strong class="text-highlight">Vercel</strong> and <strong class="text-highlight">Render</strong>.
+          </p>
+
+          <!-- Quick Live Deployments Ticker -->
+          <div class="hero-deploy-ticker">
+            <span class="ticker-label"><i class="fa-solid fa-satellite-dish"></i> Live in Production:</span>
+            <div class="ticker-chips">
+              <a href="https://orphanage-management-system-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="ticker-chip">
+                <span class="ticker-dot"></span> Orphanage System (Vercel) <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://hybrid-online-secure-online-system.vercel.app/" target="_blank" rel="noopener noreferrer" class="ticker-chip">
+                <span class="ticker-dot"></span> Voting App (Vercel) <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://indian-monument-prediction.onrender.com/" target="_blank" rel="noopener noreferrer" class="ticker-chip">
+                <span class="ticker-dot"></span> Monument AI (Render) <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://ziyakausar07.github.io/ziyakausar-portfolio/" target="_blank" rel="noopener noreferrer" class="ticker-chip">
+                <span class="ticker-dot"></span> Portfolio (GitHub Pages) <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Call to Action Buttons -->
+          <div class="hero-actions">
+            <a href="#deployments" class="btn btn-primary" id="hero-cta-deployments">
+              <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+              <span>Live Deployments</span>
+            </a>
+            <a href="#projects" class="btn btn-secondary" id="hero-cta-projects">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              <span>Explore Projects</span>
+            </a>
+            <a href="assets/resume.pdf" class="btn btn-outline btn-resume" id="hero-cta-resume" download="Ziyakausar_Tamboli_Resume.pdf" aria-label="Download Ziyakausar's Resume PDF">
+              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+              <span>Download Resume</span>
+            </a>
+          </div>
+
+          <!-- Social Links & 1-Click Copy Email -->
+          <div class="hero-socials">
+            <span class="social-label">Connect:</span>
+            <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile" title="GitHub">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://linkedin.com/in/ziyakausar07" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+            <button class="copy-email-btn" id="hero-copy-email" data-email="ziyakaus07@gmail.com" title="Click to copy email">
+              <i class="fa-regular fa-copy" aria-hidden="true"></i>
+              <span>Copy Email</span>
+            </button>
+          </div>
         </div>
+
+        <!-- Innovative Visual: Interactive Developer Studio Console -->
+        <div class="hero-visual">
+          <div class="code-studio-window glass-card" id="code-studio">
+            <!-- Mac IDE Window Header -->
+            <div class="studio-header">
+              <div class="mac-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="studio-tabs" role="tablist" aria-label="Code Studio Tabs">
+                <button class="studio-tab active" data-tab="profile" role="tab" aria-selected="true">
+                  <i class="fa-solid fa-user-astronaut"></i> developer.json
+                </button>
+                <button class="studio-tab" data-tab="stack" role="tab" aria-selected="false">
+                  <i class="fa-brands fa-react"></i> stack.config.ts
+                </button>
+                <button class="studio-tab" data-tab="deploy" role="tab" aria-selected="false">
+                  <i class="fa-solid fa-server"></i> live.deploy.env
+                </button>
+              </div>
+              <div class="studio-badge">
+                <span class="radar-ping"></span> Live Edge
+              </div>
+            </div>
+
+            <!-- Studio Code Panels -->
+            <div class="studio-content">
+              <!-- Tab 1: Profile JSON -->
+              <div class="tab-pane active" id="pane-profile">
+                <pre class="code-block"><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+  <span class="code-prop">name</span>: <span class="code-string">"Ziyakausar J Tamboli"</span>,
+  <span class="code-prop">role</span>: <span class="code-string">"MCA Student &amp; Full-Stack Dev"</span>,
+  <span class="code-prop">academicRank</span>: <span class="code-string">"9.04 / 10 CGPA (BCA)"</span>,
+  <span class="code-prop">currentDegree</span>: <span class="code-string">"MCA @ Chetan Business School"</span>,
+  <span class="code-prop">activeDeployments</span>: [
+    <span class="code-string">"orphanage-management-system-iota.vercel.app"</span>,
+    <span class="code-string">"hybrid-voting.vercel.app"</span>,
+    <span class="code-string">"monument-prediction.onrender.com"</span>,
+    <span class="code-string">"ziyakausar-portfolio.github.io"</span>
+  ],
+  <span class="code-prop">status</span>: <span class="code-string">"🟢 Open for Internships &amp; Roles"</span>
+};</code></pre>
+              </div>
+
+              <!-- Tab 2: Tech Stack TS -->
+              <div class="tab-pane" id="pane-stack">
+                <pre class="code-block"><code><span class="code-keyword">export interface</span> <span class="code-type">DeveloperStack</span> {
+  <span class="code-prop">languages</span>: [<span class="code-string">"JavaScript"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"Java"</span>, <span class="code-string">"C++"</span>],
+  <span class="code-prop">frontend</span>: [<span class="code-string">"React.js"</span>, <span class="code-string">"HTML5/CSS3"</span>, <span class="code-string">"Tailwind"</span>],
+  <span class="code-prop">backend</span>: [<span class="code-string">"Node.js"</span>, <span class="code-string">"Express"</span>, <span class="code-string">"Flask"</span>, <span class="code-string">"REST"</span>],
+  <span class="code-prop">database</span>: [<span class="code-string">"MySQL"</span>, <span class="code-string">"Oracle"</span>, <span class="code-string">"MongoDB"</span>],
+  <span class="code-prop">machineLearning</span>: [<span class="code-string">"Scikit-learn"</span>, <span class="code-string">"SVD/PCA"</span>, <span class="code-string">"OpenCV"</span>],
+  <span class="code-prop">cloudDeploy</span>: [<span class="code-string">"Vercel"</span>, <span class="code-string">"Render"</span>, <span class="code-string">"GitHub Pages"</span>]
+}</code></pre>
+              </div>
+
+              <!-- Tab 3: Live Deployments ENV -->
+              <div class="tab-pane" id="pane-deploy">
+                <pre class="code-block"><code><span class="code-comment"># Production Cloud Environment</span>
+<span class="code-prop">PORTFOLIO_URL</span>=<span class="code-string">"ziyakausar07.github.io/ziyakausar-portfolio"</span>
+<span class="code-prop">ORPHANAGE_APP_URL</span>=<span class="code-string">"orphanage-management-system-iota.vercel.app"</span>
+<span class="code-prop">VOTING_APP_URL</span>=<span class="code-string">"hybrid-online-secure-online-system.vercel.app"</span>
+<span class="code-prop">MONUMENT_AI_URL</span>=<span class="code-string">"indian-monument-prediction.onrender.com"</span>
+
+<span class="code-keyword">DEPLOY_STATUS</span>=<span class="code-string">"LIVE_AND_VERIFIED"</span>
+<span class="code-keyword">SSL_SECURITY</span>=<span class="code-string">"TLS_1.3_ENABLED"</span>
+<span class="code-keyword">UPTIME_TARGET</span>=<span class="code-string">"99.9%"</span></code></pre>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Profile Dock Card -->
+            <div class="studio-avatar-dock">
+              <div class="dock-avatar">
+                <img src="assets/images/profile.jpg" alt="Portrait of Ziyakausar J Tamboli" class="dock-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80';">
+                <div class="online-indicator" title="Status: Online & Ready"></div>
+              </div>
+              <div class="dock-meta">
+                <h4>Ziyakausar J Tamboli</h4>
+                <p><span class="badge-accent">MCA Candidate</span> • Hubli, Karnataka</p>
+              </div>
+              <div class="dock-badge">
+                <span class="cgpa-pill"><i class="fa-solid fa-award"></i> 9.04 CGPA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         2. LIVE CLOUD DEPLOYMENTS HUB (NEW INNOVATIVE SECTION)
+         ======================================================= -->
+    <section id="deployments" class="section section-deployments" aria-labelledby="deployments-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-deployed">
+            <span class="status-pulse-dot"></span>
+            <span>Production Showcase</span>
+          </span>
+          <h2 id="deployments-heading" class="section-title">
+            Live Deployments &amp; <span class="gradient-text">Cloud Systems</span>
+          </h2>
+          <p class="section-subtitle">
+            I don't just write code locally — I test, package, and deploy real software and machine learning applications to live cloud production environments.
+          </p>
+        </div>
+
+        <div class="deployments-grid">
+          <!-- Live App 1: Sushanti Children Home on Vercel -->
+          <div class="deployment-card glass-card">
+            <div class="deploy-card-header">
+              <div class="deploy-platform-badge vercel-badge">
+                <i class="fa-solid fa-triangle-exclamation fa-rotate-180" style="font-size: 0.9rem;"></i>
+                <span>Deployed on Vercel</span>
+              </div>
+              <span class="deploy-status-pill">
+                <span class="live-dot-green"></span> Live in Production
+              </span>
+            </div>
+
+            <div class="deploy-body">
+              <div class="deploy-icon-box">
+                <i class="fa-solid fa-hands-holding-child"></i>
+              </div>
+              <h3 class="deploy-title">Sushanti Children Home | Orphanage Management System</h3>
+              <p class="deploy-description">
+                End-to-end institutional management web platform featuring child admission records, adoption processing pipelines, role-based staff operations, daily work logging, and real-time inventory and donations tracking.
+              </p>
+              <div class="deploy-tech-pills">
+                <span>React.js</span>
+                <span>Vite</span>
+                <span>Python Flask</span>
+                <span>MySQL</span>
+                <span>REST APIs</span>
+                <span>Vercel Edge</span>
+              </div>
+            </div>
+
+            <div class="deploy-footer">
+              <div class="deploy-url-box" title="Live URL">
+                <i class="fa-solid fa-link"></i>
+                <span class="deploy-url-text">orphanage-management-system-iota.vercel.app</span>
+              </div>
+              <div class="deploy-actions">
+                <a href="https://orphanage-management-system-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span>Launch Live App</span>
+                </a>
+                <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Code</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live App 2: Voting System on Vercel -->
+          <div class="deployment-card glass-card">
+            <div class="deploy-card-header">
+              <div class="deploy-platform-badge vercel-badge">
+                <i class="fa-solid fa-triangle-exclamation fa-rotate-180" style="font-size: 0.9rem;"></i>
+                <span>Deployed on Vercel</span>
+              </div>
+              <span class="deploy-status-pill">
+                <span class="live-dot-green"></span> Live in Production
+              </span>
+            </div>
+
+            <div class="deploy-body">
+              <div class="deploy-icon-box">
+                <i class="fa-solid fa-check-to-slot"></i>
+              </div>
+              <h3 class="deploy-title">Hybrid Secure Online Voting System</h3>
+              <p class="deploy-description">
+                Production-grade electronic voting application featuring voter authentication, real-time vote updates via WebSockets, interactive election analytics dashboards, and relational MySQL schemas.
+              </p>
+              <div class="deploy-tech-pills">
+                <span>React.js</span>
+                <span>Node.js</span>
+                <span>Socket.io</span>
+                <span>MySQL</span>
+                <span>Vercel Edge</span>
+              </div>
+            </div>
+
+            <div class="deploy-footer">
+              <div class="deploy-url-box" title="Live URL">
+                <i class="fa-solid fa-link"></i>
+                <span class="deploy-url-text">hybrid-online-secure-online-system.vercel.app</span>
+              </div>
+              <div class="deploy-actions">
+                <a href="https://hybrid-online-secure-online-system.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span>Launch Live App</span>
+                </a>
+                <a href="https://github.com/ziyakausar07/hybrid-online-secure-online-system" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Code</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live App 2: Indian Monument AI on Render -->
+          <div class="deployment-card glass-card">
+            <div class="deploy-card-header">
+              <div class="deploy-platform-badge render-badge">
+                <i class="fa-solid fa-cloud" style="font-size: 0.9rem;"></i>
+                <span>Deployed on Render</span>
+              </div>
+              <span class="deploy-status-pill">
+                <span class="live-dot-green"></span> Live in Production
+              </span>
+            </div>
+
+            <div class="deploy-body">
+              <div class="deploy-icon-box">
+                <i class="fa-solid fa-landmark"></i>
+              </div>
+              <h3 class="deploy-title">Indian Monument Image Analysis &amp; Classifier</h3>
+              <p class="deploy-description">
+                Computer vision &amp; machine learning web service deploying SVD/PCA dimensionality reduction, image preprocessing pipelines (bilateral filtering, histogram equalization), and SVM/KNN classification models.
+              </p>
+              <div class="deploy-tech-pills">
+                <span>Python</span>
+                <span>Scikit-learn</span>
+                <span>OpenCV</span>
+                <span>Flask</span>
+                <span>Render Cloud</span>
+              </div>
+            </div>
+
+            <div class="deploy-footer">
+              <div class="deploy-url-box" title="Live URL">
+                <i class="fa-solid fa-link"></i>
+                <span class="deploy-url-text">indian-monument-prediction.onrender.com</span>
+              </div>
+              <div class="deploy-actions">
+                <a href="https://indian-monument-prediction.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span>Launch Live App</span>
+                </a>
+                <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Code</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live App 3: Personal Developer Portfolio on GitHub Pages -->
+          <div class="deployment-card glass-card">
+            <div class="deploy-card-header">
+              <div class="deploy-platform-badge github-badge">
+                <i class="fa-brands fa-github" style="font-size: 0.95rem;"></i>
+                <span>Deployed on GitHub Pages</span>
+              </div>
+              <span class="deploy-status-pill">
+                <span class="live-dot-green"></span> Live in Production
+              </span>
+            </div>
+
+            <div class="deploy-body">
+              <div class="deploy-icon-box">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="deploy-title">Ziyakausar J Tamboli — Developer Portfolio</h3>
+              <p class="deploy-description">
+                Ultra-responsive developer portfolio website featuring Glassmorphism 2.0 aesthetics, interactive code studio window, live project filters, instant client-side validation, and WCAG AA accessibility.
+              </p>
+              <div class="deploy-tech-pills">
+                <span>HTML5</span>
+                <span>Vanilla CSS</span>
+                <span>JavaScript</span>
+                <span>GitHub Pages</span>
+                <span>WCAG 2.2 AA</span>
+              </div>
+            </div>
+
+            <div class="deploy-footer">
+              <div class="deploy-url-box" title="Live URL">
+                <i class="fa-solid fa-link"></i>
+                <span class="deploy-url-text">ziyakausar07.github.io/ziyakausar-portfolio</span>
+              </div>
+              <div class="deploy-actions">
+                <a href="https://ziyakausar07.github.io/ziyakausar-portfolio/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span>Current Site</span>
+                </a>
+                <a href="https://github.com/ziyakausar07/ziyakausar-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Repo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Deployment Metrics Ribbon -->
+        <div class="deploy-metrics-strip glass-card">
+          <div class="metric-item">
+            <span class="metric-value gradient-text">100%</span>
+            <span class="metric-label">Production Cloud Deployed</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-value gradient-text">4</span>
+            <span class="metric-label">Live Cloud Services</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-value gradient-text">9.04</span>
+            <span class="metric-label">BCA CGPA Distinction</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-value gradient-text">&lt; 1s</span>
+            <span class="metric-label">Global Edge CDN Latency</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         3. ABOUT ME SECTION (MODERN BENTO GRID)
+         ======================================================= -->
+    <section id="about" class="section section-alt" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+            <span>Engineering Profile</span>
+          </span>
+          <h2 id="about-heading" class="section-title">Driven by Curiosity, <span class="gradient-text">Grounded in Engineering</span></h2>
+          <p class="section-subtitle">
+            A comprehensive overview of my academic foundation, software engineering philosophy, and continuous drive for excellence.
+          </p>
+        </div>
+
+        <!-- Modern Bento Grid -->
+        <div class="bento-grid">
+          <!-- Bento 1: Main Story Card (Large) -->
+          <div class="bento-card bento-wide glass-card">
+            <div class="bento-header">
+              <div class="bento-icon-wrapper">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <span class="bento-tag">Academic Journey</span>
+            </div>
+            <h3 class="bento-title">Master of Computer Applications &amp; Full-Stack Passion</h3>
+            <p class="bento-text">
+              I am currently pursuing my <strong>Master of Computer Applications (MCA)</strong> at Chetan Business School (CBS), Institute of Management, IT and Research in Hubli, Karnataka. Prior to this, I completed my <strong>Bachelor of Computer Applications (BCA)</strong> from KLE Technological University, securing an outstanding academic record of <strong>9.04 / 10 CGPA</strong>.
+            </p>
+            <p class="bento-text">
+              My engineering philosophy revolves around writing clean, modular, and maintainable software. I love bridging the gap between theoretical computer science algorithms and robust, cloud-deployed real-world products.
+            </p>
+            <div class="bento-pills">
+              <span class="bento-pill"><i class="fa-solid fa-check"></i> MCA @ CBS (2025–2027)</span>
+              <span class="bento-pill"><i class="fa-solid fa-check"></i> BCA @ KLE Tech (9.04 CGPA)</span>
+              <span class="bento-pill"><i class="fa-solid fa-check"></i> 12th Science (78%)</span>
+            </div>
+          </div>
+
+          <!-- Bento 2: Academic Excellence Meter -->
+          <div class="bento-card glass-card bento-stat-card">
+            <div class="bento-header">
+              <div class="bento-icon-wrapper gold-glow">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <span class="bento-tag">Distinction</span>
+            </div>
+            <div class="cgpa-radial-box">
+              <div class="cgpa-number gradient-text">9.04</div>
+              <div class="cgpa-scale">out of 10.0 CGPA</div>
+            </div>
+            <h4 class="bento-subheading">KLE Technological University</h4>
+            <p class="bento-subtext">Consistent top-tier academic standing across 6 BCA semesters with core coursework in Algorithms, DBMS, and OOP.</p>
+          </div>
+
+          <!-- Bento 3: ML & Systems Card -->
+          <div class="bento-card glass-card">
+            <div class="bento-header">
+              <div class="bento-icon-wrapper cyan-glow">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <span class="bento-tag">Applied Intelligence</span>
+            </div>
+            <h3 class="bento-title">Applied Machine Learning &amp; Computer Vision</h3>
+            <p class="bento-text">
+              Experienced in mathematical feature extraction (SVD, PCA), classifier benchmarking (SVM, KNN, XGBoost), image preprocessing with OpenCV, and training ensemble models on healthcare &amp; image datasets.
+            </p>
+            <div class="mini-tech-icons">
+              <span class="tech-chip"><i class="fa-brands fa-python"></i> Python</span>
+              <span class="tech-chip"><i class="fa-solid fa-gears"></i> Scikit-learn</span>
+              <span class="tech-chip"><i class="fa-solid fa-eye"></i> OpenCV</span>
+            </div>
+          </div>
+
+          <!-- Bento 4: Leadership & Community (Wide) -->
+          <div class="bento-card bento-wide glass-card">
+            <div class="bento-header">
+              <div class="bento-icon-wrapper purple-glow">
+                <i class="fa-solid fa-people-group"></i>
+              </div>
+              <span class="bento-tag">Leadership &amp; Community</span>
+            </div>
+            <div class="bento-two-col">
+              <div>
+                <h4 class="bento-subheading"><i class="fa-solid fa-laptop-code" style="color: var(--accent-primary);"></i> Core Member — Codecrafters Club (CBS)</h4>
+                <p class="bento-subtext">
+                  Organizing campus workshops, technical coding challenges, and collaborative peer learning sessions on full-stack architecture and computational thinking.
+                </p>
+              </div>
+              <div>
+                <h4 class="bento-subheading"><i class="fa-solid fa-hands-holding-heart" style="color: var(--accent-secondary);"></i> Volunteer — Hackathon 1.0 &amp; 2.0</h4>
+                <p class="bento-subtext">
+                  Facilitated team setups, mentor coordination, and judging infrastructure across successive technical hackathons, driving innovation culture.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         4. TECHNICAL SKILLS SECTION (WITH LIVE SEARCH & FILTERS)
+         ======================================================= -->
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <i class="fa-solid fa-code" aria-hidden="true"></i>
+            <span>Verified Inventory</span>
+          </span>
+          <h2 id="skills-heading" class="section-title">Technical Skills &amp; <span class="gradient-text">Technologies</span></h2>
+          <p class="section-subtitle">
+            A comprehensive, verified inventory of programming languages, web technologies, databases, frameworks, and developer tools.
+          </p>
+        </div>
+
+        <!-- Innovative Skills Search & Quick Filter Bar -->
+        <div class="skills-filter-toolbar glass-card">
+          <div class="skills-search-box">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="text" id="skills-search-input" placeholder="Search any technology (e.g., Python, React, MySQL, Git, Scikit-learn)..." aria-label="Search skills">
+            <button id="skills-search-clear" class="search-clear-btn" aria-label="Clear search" style="display: none;">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="skills-category-tabs" role="tablist" aria-label="Skill Category Tabs">
+            <button class="skill-cat-btn active" data-cat="all" role="tab" aria-selected="true">All Skills</button>
+            <button class="skill-cat-btn" data-cat="languages" role="tab" aria-selected="false">Languages</button>
+            <button class="skill-cat-btn" data-cat="web" role="tab" aria-selected="false">Web &amp; UI</button>
+            <button class="skill-cat-btn" data-cat="db" role="tab" aria-selected="false">Databases</button>
+            <button class="skill-cat-btn" data-cat="ml" role="tab" aria-selected="false">ML &amp; Data</button>
+            <button class="skill-cat-btn" data-cat="tools" role="tab" aria-selected="false">Tools &amp; OS</button>
+          </div>
+        </div>
+
+        <div class="skills-grid" id="skills-grid-container">
+          <!-- 1. Programming Languages -->
+          <div class="skill-category-card glass-card" data-category="languages">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+              </div>
+              <h3 class="category-title">Programming Languages</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-item" data-skill="c"><i class="fa-solid fa-code"></i> C</span>
+              <span class="skill-item" data-skill="c++"><i class="fa-solid fa-code"></i> C++</span>
+              <span class="skill-item" data-skill="java"><i class="fa-brands fa-java"></i> Java</span>
+              <span class="skill-item" data-skill="python"><i class="fa-brands fa-python"></i> Python</span>
+              <span class="skill-item" data-skill="javascript js"><i class="fa-brands fa-js"></i> JavaScript</span>
+            </div>
+          </div>
+
+          <!-- 2. Web Technologies -->
+          <div class="skill-category-card glass-card" data-category="web">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fa-solid fa-globe" aria-hidden="true"></i>
+              </div>
+              <h3 class="category-title">Web Technologies</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-item" data-skill="html html5"><i class="fa-brands fa-html5"></i> HTML5</span>
+              <span class="skill-item" data-skill="css css3"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+              <span class="skill-item" data-skill="bootstrap"><i class="fa-brands fa-bootstrap"></i> Bootstrap</span>
+              <span class="skill-item" data-skill="react react.js"><i class="fa-brands fa-react"></i> React.js</span>
+              <span class="skill-item" data-skill="tailwind css"><i class="fa-solid fa-wind"></i> Tailwind CSS</span>
+              <span class="skill-item" data-skill="node node.js express"><i class="fa-brands fa-node-js"></i> Node.js (Express)</span>
+            </div>
+          </div>
+
+          <!-- 3. Databases -->
+          <div class="skill-category-card glass-card" data-category="db">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fa-solid fa-database" aria-hidden="true"></i>
+              </div>
+              <h3 class="category-title">Databases</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-item" data-skill="mysql"><i class="fa-solid fa-database"></i> MySQL</span>
+              <span class="skill-item" data-skill="oracle"><i class="fa-solid fa-database"></i> Oracle SQL</span>
+              <span class="skill-item" data-skill="mongodb"><i class="fa-solid fa-leaf"></i> MongoDB</span>
+              <span class="skill-item" data-skill="sql server"><i class="fa-solid fa-server"></i> SQL Server</span>
+            </div>
+          </div>
+
+          <!-- 4. Frameworks & Libraries -->
+          <div class="skill-category-card glass-card" data-category="ml">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+              </div>
+              <h3 class="category-title">ML, AI &amp; Frameworks</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-item" data-skill="flask"><i class="fa-solid fa-flask"></i> Flask</span>
+              <span class="skill-item" data-skill="numpy"><i class="fa-solid fa-chart-line"></i> NumPy</span>
+              <span class="skill-item" data-skill="pandas"><i class="fa-solid fa-table"></i> Pandas</span>
+              <span class="skill-item" data-skill="scikit-learn sklearn"><i class="fa-solid fa-gears"></i> Scikit-learn</span>
+              <span class="skill-item" data-skill="tensorflow"><i class="fa-solid fa-brain"></i> TensorFlow</span>
+              <span class="skill-item" data-skill="xgboost"><i class="fa-solid fa-bolt"></i> XGBoost</span>
+              <span class="skill-item" data-skill="opencv cv"><i class="fa-solid fa-eye"></i> OpenCV</span>
+            </div>
+          </div>
+
+          <!-- 5. Tools & Deployment -->
+          <div class="skill-category-card glass-card" data-category="tools">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fa-solid fa-wrench" aria-hidden="true"></i>
+              </div>
+              <h3 class="category-title">Tools &amp; Cloud Deployment</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-item" data-skill="git"><i class="fa-brands fa-git-alt"></i> Git</span>
+              <span class="skill-item" data-skill="github"><i class="fa-brands fa-github"></i> GitHub</span>
+              <span class="skill-item" data-skill="vs code visual studio"><i class="fa-solid fa-code"></i> VS Code</span>
+              <span class="skill-item" data-skill="postman"><i class="fa-solid fa-paper-plane"></i> Postman</span>
+              <span class="skill-item" data-skill="vercel"><i class="fa-solid fa-cloud"></i> Vercel</span>
+              <span class="skill-item" data-skill="render"><i class="fa-solid fa-server"></i> Render</span>
+            </div>
+          </div>
+
+          <!-- 6. Core Computer Science & OS -->
+          <div class="skill-category-card glass-card" data-category="tools">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fa-solid fa-network-wired" aria-hidden="true"></i>
+              </div>
+              <h3 class="category-title">Core CS &amp; Systems</h3>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-item" data-skill="dsa data structures"><i class="fa-solid fa-sitemap"></i> DSA</span>
+              <span class="skill-item" data-skill="oop object oriented"><i class="fa-solid fa-object-group"></i> OOP</span>
+              <span class="skill-item" data-skill="dbms database design"><i class="fa-solid fa-hard-drive"></i> DBMS</span>
+              <span class="skill-item" data-skill="computer networks"><i class="fa-solid fa-diagram-project"></i> Networking</span>
+              <span class="skill-item" data-skill="linux ubuntu"><i class="fa-brands fa-ubuntu"></i> Linux (Ubuntu)</span>
+              <span class="skill-item" data-skill="windows"><i class="fa-brands fa-windows"></i> Windows 10/11</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         5. FEATURED PROJECTS SECTION (WITH LIVE DEPLOYED MOCKUPS)
+         ======================================================= -->
+    <section id="projects" class="section section-alt" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+            <span>Portfolio Work</span>
+          </span>
+          <h2 id="projects-heading" class="section-title">Featured Projects &amp; <span class="gradient-text">Source Code</span></h2>
+          <p class="section-subtitle">
+            Curated software engineering and machine learning projects from my academic and personal portfolio.
+          </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="project-filters" role="tablist" aria-label="Project Category Filters">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+          <button class="filter-btn" data-filter="web-development" role="tab" aria-selected="false">Full-Stack Web</button>
+          <button class="filter-btn" data-filter="machine-learning" role="tab" aria-selected="false">Machine Learning &amp; AI</button>
+          <button class="filter-btn" data-filter="computer-graphics" role="tab" aria-selected="false">Computer Graphics</button>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="projects-grid">
+
+          <!-- Project 1: Indian Monument Image Analysis (LIVE DEPLOYED) -->
+          <article class="project-card glass-card" data-category="machine-learning">
+            <!-- Browser Mockup Chrome -->
+            <div class="card-browser-bar">
+              <div class="browser-dots">
+                <span class="b-dot red"></span>
+                <span class="b-dot yellow"></span>
+                <span class="b-dot green"></span>
+              </div>
+              <div class="browser-address">indian-monument-prediction.onrender.com</div>
+              <span class="badge-deployed-pill"><span class="live-dot-green"></span> Render Live</span>
+            </div>
+
+            <div class="project-top">
+              <div class="project-icon-wrapper">
+                <i class="fa-solid fa-landmark" aria-hidden="true"></i>
+              </div>
+              <span class="project-badge">Machine Learning / CV</span>
+            </div>
+            <h3 class="project-title">Indian Monument Image Analysis &amp; Classification</h3>
+            <ul class="project-description-list">
+              <li>Applied Singular Value Decomposition (SVD) and Principal Component Analysis (PCA) for image compression, feature extraction, and dimensionality reduction.</li>
+              <li>Trained and benchmarked classification algorithms including Support Vector Machines (SVM) and K-Nearest Neighbors (KNN).</li>
+              <li>Engineered image preprocessing pipelines using grayscale conversion, bilateral filtering, and histogram equalization.</li>
+              <li><strong>Deployed live on Render</strong> with cloud inference API and web interface.</li>
+            </ul>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">SciPy</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Render Cloud</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://indian-monument-prediction.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" aria-label="View Indian Monument Prediction live demo">
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                <span>Live Demo (Render)</span>
+              </a>
+              <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" aria-label="View Indian Monument source code on GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: Hybrid Secure Online Voting System (LIVE DEPLOYED) -->
+          <article class="project-card glass-card" data-category="web-development">
+            <!-- Browser Mockup Chrome -->
+            <div class="card-browser-bar">
+              <div class="browser-dots">
+                <span class="b-dot red"></span>
+                <span class="b-dot yellow"></span>
+                <span class="b-dot green"></span>
+              </div>
+              <div class="browser-address">hybrid-online-secure-online-system.vercel.app</div>
+              <span class="badge-deployed-pill"><span class="live-dot-green"></span> Vercel Live</span>
+            </div>
+
+            <div class="project-top">
+              <div class="project-icon-wrapper">
+                <i class="fa-solid fa-check-to-slot" aria-hidden="true"></i>
+              </div>
+              <span class="project-badge">Full-Stack Web &amp; Security</span>
+            </div>
+            <h3 class="project-title">Hybrid Secure Online Voting System</h3>
+            <ul class="project-description-list">
+              <li>Engineered an end-to-end secure electronic voting platform with role-based voter authentication, encrypted balloting, and audit logs.</li>
+              <li>Developed an interactive, responsive frontend using React, Framer Motion, and Recharts for live election analytics and voter dashboards.</li>
+              <li>Implemented real-time vote updates and election management using WebSockets, Node.js, and Java backend services.</li>
+              <li><strong>Deployed live on Vercel</strong> with edge hosting and high availability.</li>
+            </ul>
+            <div class="project-tech-stack">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Socket.io</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://hybrid-online-secure-online-system.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" aria-label="View Hybrid Secure Online Voting System live demo">
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                <span>Live Demo (Vercel)</span>
+              </a>
+              <a href="https://github.com/ziyakausar07/hybrid-online-secure-online-system" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" aria-label="View Hybrid Secure Voting System code on GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Real Estate Management System -->
+          <article class="project-card glass-card" data-category="web-development">
+            <div class="card-browser-bar">
+              <div class="browser-dots">
+                <span class="b-dot red"></span>
+                <span class="b-dot yellow"></span>
+                <span class="b-dot green"></span>
+              </div>
+              <div class="browser-address">github.com/ziyakausar07/real-estate-management</div>
+              <span class="badge-staging-pill">Web Portal</span>
+            </div>
+
+            <div class="project-top">
+              <div class="project-icon-wrapper">
+                <i class="fa-solid fa-building" aria-hidden="true"></i>
+              </div>
+              <span class="project-badge">Full-Stack Web</span>
+            </div>
+            <h3 class="project-title">Real Estate Management System</h3>
+            <ul class="project-description-list">
+              <li>Developed a responsive property browsing interface featuring multi-parameter filtering for locations, pricing, and amenities.</li>
+              <li>Constructed RESTful APIs and optimized MySQL relational database schemas for secure user profiles and property listings.</li>
+              <li>Implemented secure JWT-based token authentication and role authorization for clients and agents.</li>
+              <li>Integrated a Python-based valuation algorithm assessing historical sales trends and property dimensions.</li>
+            </ul>
+            <div class="project-tech-stack">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express.js</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Python</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" aria-label="View Real Estate Management System code on GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <span>GitHub Repo</span>
+              </a>
+              <span class="btn btn-sm btn-disabled" aria-disabled="true">
+                <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                <span>Cloud Deployment in Progress</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Project 4: Orphanage Management System (LIVE DEPLOYED) -->
+          <article class="project-card glass-card" data-category="web-development">
+            <div class="card-browser-bar">
+              <div class="browser-dots">
+                <span class="b-dot red"></span>
+                <span class="b-dot yellow"></span>
+                <span class="b-dot green"></span>
+              </div>
+              <div class="browser-address">orphanage-management-system-iota.vercel.app</div>
+              <span class="badge-deployed-pill"><span class="live-dot-green"></span> Vercel Live</span>
+            </div>
+
+            <div class="project-top">
+              <div class="project-icon-wrapper">
+                <i class="fa-solid fa-hands-holding-child" aria-hidden="true"></i>
+              </div>
+              <span class="project-badge">Full-Stack Web &amp; Portal</span>
+            </div>
+            <h3 class="project-title">Sushanti Children Home | Orphanage Management System</h3>
+            <ul class="project-description-list">
+              <li>Architected and developed a full-stack institutional management platform to streamline child admission records, adoption processing pipelines, and donor tracking.</li>
+              <li>Engineered dedicated role-based portals for Administrators, Care Staff, and Donors with daily duty logging, communication messaging, and care schedules.</li>
+              <li>Constructed Python Flask RESTful APIs and structured relational MySQL database schemas for real-time inventory management, sponsorship records, and audit logs.</li>
+              <li><strong>Deployed live on Vercel</strong> with edge CDN delivery, responsive UI built with React and modern typography.</li>
+            </ul>
+            <div class="project-tech-stack">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Vite</span>
+              <span class="tech-tag">Python (Flask)</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">REST APIs</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://orphanage-management-system-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" aria-label="View Sushanti Children Home live demo">
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                <span>Live Demo (Vercel)</span>
+              </a>
+              <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" aria-label="View Orphanage Management System on GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 5: Interactive Paint Application -->
+          <article class="project-card glass-card" data-category="computer-graphics">
+            <div class="card-browser-bar">
+              <div class="browser-dots">
+                <span class="b-dot red"></span>
+                <span class="b-dot yellow"></span>
+                <span class="b-dot green"></span>
+              </div>
+              <div class="browser-address">localhost:app/graphics-engine</div>
+              <span class="badge-staging-pill">Desktop Engine</span>
+            </div>
+
+            <div class="project-top">
+              <div class="project-icon-wrapper">
+                <i class="fa-solid fa-palette" aria-hidden="true"></i>
+              </div>
+              <span class="project-badge">Computer Graphics &amp; GUI</span>
+            </div>
+            <h3 class="project-title">Interactive Paint Application — Computer Graphics</h3>
+            <ul class="project-description-list">
+              <li>Implemented fundamental 2D rasterization algorithms from scratch: DDA, Bresenham's line and circle, Midpoint Circle/Ellipse, Scanline Polygon Fill, and Flood Fill.</li>
+              <li>Engineered multi-layer rendering with alpha compositing, eight customizable blend modes, undo/redo history, and a zoomable pixel grid.</li>
+              <li>Implemented 2D affine geometric transformations using homogeneous 3×3 matrix operations.</li>
+              <li>Integrated image filters including Otsu's thresholding, morphological operations, Sobel edge detection, and custom spatial convolution.</li>
+            </ul>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Tkinter</span>
+              <span class="tech-tag">Pillow (PIL)</span>
+              <span class="tech-tag">Matrix Math</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" aria-label="View Interactive Paint Application code on GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <span>GitHub Repo</span>
+              </a>
+              <span class="btn btn-sm btn-disabled" aria-disabled="true">
+                <i class="fa-solid fa-desktop" aria-hidden="true"></i>
+                <span>Desktop GUI App</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Project 6: Drug Side Effects & Clinical Risk Prediction -->
+          <article class="project-card glass-card" data-category="machine-learning">
+            <div class="card-browser-bar">
+              <div class="browser-dots">
+                <span class="b-dot red"></span>
+                <span class="b-dot yellow"></span>
+                <span class="b-dot green"></span>
+              </div>
+              <div class="browser-address">github.com/ziyakausar07/drug-risk-prediction</div>
+              <span class="badge-staging-pill">Data Science</span>
+            </div>
+
+            <div class="project-top">
+              <div class="project-icon-wrapper">
+                <i class="fa-solid fa-capsules" aria-hidden="true"></i>
+              </div>
+              <span class="project-badge">Data Science &amp; ML</span>
+            </div>
+            <h3 class="project-title">Drug Side Effects &amp; Clinical Risk Prediction</h3>
+            <ul class="project-description-list">
+              <li>Developed an interactive web application for pharmaceutical adverse effect analysis and clinical risk assessment.</li>
+              <li>Trained and benchmarked diverse algorithms: Logistic Regression, Random Forest, XGBoost, CatBoost, and LightGBM.</li>
+              <li>Built a high-accuracy soft-voting ensemble model and end-to-end data preprocessing pipelines.</li>
+              <li>Executed comprehensive exploratory data analysis, feature selection, and class imbalance handling on healthcare datasets.</li>
+            </ul>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">XGBoost</span>
+              <span class="tech-tag">LightGBM</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" aria-label="View Drug Side Effects Prediction project on GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <span>GitHub Repo</span>
+              </a>
+              <span class="btn btn-sm btn-disabled" aria-disabled="true">
+                <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                <span>Cloud Deployment in Progress</span>
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         6. EDUCATION SECTION
+         ======================================================= -->
+    <section id="education" class="section" aria-labelledby="education-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+            <span>Academic Background</span>
+          </span>
+          <h2 id="education-heading" class="section-title">Formal Education &amp; <span class="gradient-text">Qualifications</span></h2>
+          <p class="section-subtitle">
+            Formal degrees and academic achievements documenting my solid foundation in computer science and software development.
+          </p>
+        </div>
+
+        <div class="education-timeline">
+          <!-- Item 1: MCA -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card glass-card">
+              <div class="timeline-header">
+                <h3 class="timeline-degree">Master of Computer Applications (MCA)</h3>
+                <span class="timeline-period">2025 – 2027</span>
+              </div>
+              <p class="timeline-institution">
+                <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+                <span>Chetan Business School (CBS), Institute of Management, IT and Research</span>
+              </p>
+              <div class="timeline-score">
+                <i class="fa-solid fa-spinner fa-spin" style="color: var(--accent-primary);" aria-hidden="true"></i>
+                <span>Status: Currently Pursuing (MCA 1st Year)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: BCA -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card glass-card">
+              <div class="timeline-header">
+                <h3 class="timeline-degree">Bachelor of Computer Applications (BCA)</h3>
+                <span class="timeline-period">2022 – 2025</span>
+              </div>
+              <p class="timeline-institution">
+                <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+                <span>KLE Technological University, Hubli, Karnataka</span>
+              </p>
+              <div class="timeline-score">
+                <i class="fa-solid fa-award" style="color: #f59e0b;" aria-hidden="true"></i>
+                <span>Academic Score: <strong>CGPA 9.04 / 10</strong> (Graduated with Distinction)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: 12th Science -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-card glass-card">
+              <div class="timeline-header">
+                <h3 class="timeline-degree">12th Standard — Science (Pre-University)</h3>
+                <span class="timeline-period">2020 – 2022</span>
+              </div>
+              <p class="timeline-institution">
+                <i class="fa-solid fa-school" aria-hidden="true"></i>
+                <span>Dr. R B Patil Mahesh PU College, Hubli, Karnataka</span>
+              </p>
+              <div class="timeline-score">
+                <i class="fa-solid fa-certificate" style="color: var(--accent-tertiary);" aria-hidden="true"></i>
+                <span>Percentage: <strong>78%</strong> (First Class with Distinction)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         7. CERTIFICATIONS & ACTIVITIES SECTION
+         ======================================================= -->
+    <section id="certifications" class="section section-alt" aria-labelledby="certifications-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+            <span>Professional Growth</span>
+          </span>
+          <h2 id="certifications-heading" class="section-title">Certifications &amp; <span class="gradient-text">Activities</span></h2>
+          <p class="section-subtitle">
+            Industry credentials and extracurricular participation demonstrating leadership, continuous learning, and teamwork.
+          </p>
+        </div>
+
+        <div class="two-col-grid">
+          <!-- Certifications Column -->
+          <div>
+            <div class="col-header">
+              <i class="fa-solid fa-file-shield" aria-hidden="true"></i>
+              <h3>Certifications</h3>
+            </div>
+
+            <!-- Cert 1 -->
+            <div class="cert-card glass-card">
+              <div class="card-icon">
+                <i class="fa-brands fa-react" aria-hidden="true"></i>
+              </div>
+              <div class="card-content">
+                <h4>React.js — Frontend Development Certification</h4>
+                <div class="issuer">Simplilearn</div>
+                <p>Comprehensive training covering modern component-based architecture, state management, hooks, and responsive frontend design.</p>
+              </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="cert-card glass-card">
+              <div class="card-icon">
+                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              </div>
+              <div class="card-content">
+                <h4>Full Stack Development Course</h4>
+                <div class="issuer">Completed April 6, 2026</div>
+                <p>Intensive curriculum emphasizing frontend and backend integration, relational and document databases, and RESTful API deployment.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Extracurricular Activities Column -->
+          <div>
+            <div class="col-header">
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              <h3>Activities &amp; Volunteering</h3>
+            </div>
+
+            <!-- Activity 1 -->
+            <div class="activity-card glass-card">
+              <div class="card-icon">
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+              </div>
+              <div class="card-content">
+                <h4>Core Member — Codecrafters Club</h4>
+                <div class="issuer">Chetan Business School (CBS) | 2025</div>
+                <p>Organized campus activities focusing on modern programming, computational thinking, and software engineering's pivotal role in today's tech world.</p>
+              </div>
+            </div>
+
+            <!-- Activity 2 -->
+            <div class="activity-card glass-card">
+              <div class="card-icon">
+                <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+              </div>
+              <div class="card-content">
+                <h4>Volunteer — Hackathon 1.0 &amp; Hackathon 2.0</h4>
+                <div class="issuer">Technical Events | 2026</div>
+                <p>Contributed as an active event volunteer facilitating team coordination, technical mentorship setups, and logistics across successive hackathons.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         8. CONTACT SECTION
+         ======================================================= -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            <span>Get In Touch</span>
+          </span>
+          <h2 id="contact-heading" class="section-title">Let's Connect &amp; <span class="gradient-text">Collaborate</span></h2>
+          <p class="section-subtitle">
+            Whether you have an internship opportunity, a project proposal, or just want to discuss software engineering, feel free to reach out.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Details Cards -->
+          <div class="contact-info">
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              </div>
+              <div class="contact-info-detail">
+                <h4>Email Address</h4>
+                <a href="mailto:ziyakaus07@gmail.com" id="contact-link-email">ziyakaus07@gmail.com</a>
+              </div>
+              <button class="copy-mini-btn" data-email="ziyakaus07@gmail.com" title="Copy email address" aria-label="Copy email address">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              </div>
+              <div class="contact-info-detail">
+                <h4>Phone Number</h4>
+                <a href="tel:+919019713590" id="contact-link-phone">+91-9019713590</a>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              </div>
+              <div class="contact-info-detail">
+                <h4>Location</h4>
+                <p>Hubli, Karnataka, India</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+              </div>
+              <div class="contact-info-detail">
+                <h4>GitHub Profile</h4>
+                <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer">github.com/ziyakausar07</a>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </div>
+              <div class="contact-info-detail">
+                <h4>LinkedIn Profile</h4>
+                <a href="https://linkedin.com/in/ziyakausar07" target="_blank" rel="noopener noreferrer">linkedin.com/in/ziyakausar07</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact Form -->
+          <div class="contact-form-container glass-card">
+            <form id="contact-form" novalidate aria-label="Contact Ziyakausar J Tamboli">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Your Name <span style="color: #ef4444;">*</span></label>
+                <input type="text" id="contact-name" name="name" class="form-control" placeholder="e.g. Alex Johnson" required autocomplete="name">
+                <span class="form-error">Please enter your name.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Your Email Address <span style="color: #ef4444;">*</span></label>
+                <input type="email" id="contact-email" name="email" class="form-control" placeholder="e.g. alex@example.com" required autocomplete="email">
+                <span class="form-error">Please enter a valid email address.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">Subject <span style="color: #ef4444;">*</span></label>
+                <input type="text" id="contact-subject" name="subject" class="form-control" placeholder="e.g. Internship Inquiry / Collaboration" required>
+                <span class="form-error">Please enter a subject.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message <span style="color: #ef4444;">*</span></label>
+                <textarea id="contact-message" name="message" class="form-control" placeholder="Type your message here..." rows="5" required></textarea>
+                <span class="form-error">Message must be at least 10 characters long.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;" id="btn-submit-contact">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                <span>Send Message</span>
+              </button>
+
+              <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
+
+              <p class="form-note">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                Direct email response via <strong>ziyakaus07@gmail.com</strong>. Form submission automatically prepares your email client with all fields pre-formatted.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =======================================================
+       9. FOOTER
+       ======================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="#home" class="brand-logo" aria-label="Ziyakausar J Tamboli">
+            <span class="logo-mark">Z</span>
+            <span>Ziyakausar<span class="gradient-text">.dev</span></span>
+          </a>
+          <p>
+            MCA Student &amp; Full-Stack Developer dedicated to engineering performant web applications, intelligent systems, and software solutions deployed live on production cloud infrastructure.
+          </p>
+          <div class="footer-live-indicator">
+            <span class="live-dot-green"></span>
+            <span>Deployed Live on GitHub Pages • Vercel • Render</span>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <nav class="footer-nav" aria-label="Footer Quick Links">
+            <a href="#home">Home</a>
+            <a href="#deployments">Live Deployments</a>
+            <a href="#about">About Me</a>
+            <a href="#skills">Technical Skills</a>
+            <a href="#projects">Featured Projects</a>
+            <a href="#education">Education &amp; Background</a>
+          </nav>
+        </div>
+
+        <!-- Connect & Resources -->
+        <div>
+          <h4 class="footer-heading">Connect &amp; Profiles</h4>
+          <nav class="footer-nav" aria-label="Footer Social Links">
+            <a href="https://github.com/ziyakausar07" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" style="margin-right: 6px;"></i> GitHub
+            </a>
+            <a href="https://linkedin.com/in/ziyakausar07" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in" style="margin-right: 6px;"></i> LinkedIn
+            </a>
+            <a href="mailto:ziyakaus07@gmail.com">
+              <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> ziyakaus07@gmail.com
+            </a>
+            <a href="assets/resume.pdf" class="btn-resume" download="Ziyakausar_Tamboli_Resume.pdf">
+              <i class="fa-solid fa-file-arrow-down" style="margin-right: 6px;"></i> Resume (PDF)
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="copyright">
+          &copy; <span id="current-year">2026</span> <strong>Ziyakausar J Tamboli</strong>. All rights reserved. • Deployed with pride on GitHub Pages.
+        </p>
+
+        <button id="footer-back-top" class="back-to-top" aria-label="Back to Top">
+          <span>Back to Top</span>
+          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
-</footer>
+  </footer>
 
-<script>
-    /* ===== HAMBURGER MENU ===== */
-    document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        hamburger?.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu?.classList.toggle('active');
-        });
+  <!-- Floating Back-to-Top Button -->
+  <button id="floating-back-top" class="floating-back-top" aria-label="Scroll back to top of page" title="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger?.classList.remove('active');
-                navMenu?.classList.remove('active');
-            });
-        });
-    });
+  <!-- =======================================================
+       10. DEVELOPER COMMAND PALETTE (CTRL + K TERMINAL MODAL)
+       ======================================================= -->
+  <div id="cmd-palette-modal" class="cmd-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Developer Command Palette">
+    <div class="cmd-modal-dialog glass-card">
+      <div class="cmd-search-header">
+        <i class="fa-solid fa-terminal cmd-icon"></i>
+        <input type="text" id="cmd-input" placeholder="Type a command or jump to section (e.g., 'deploy', 'skills', 'projects', 'theme', 'copy email')..." autocomplete="off" spellcheck="false">
+        <button id="cmd-close-btn" class="cmd-close" aria-label="Close command palette">ESC</button>
+      </div>
 
-    /* ===== SMOOTH SCROLL FOR NAVIGATION LINKS ===== */
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", function (e) {
-            const href = this.getAttribute("href");
-            if (href !== "#") {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ 
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }
-            }
-        });
-    });
+      <div class="cmd-results" id="cmd-results-list">
+        <div class="cmd-group-label">Quick Navigation</div>
+        <div class="cmd-item" data-action="goto" data-target="#deployments">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <span class="cmd-item-title">Jump to Live Cloud Deployments</span>
+          <span class="cmd-item-badge">Section</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#projects">
+          <i class="fa-solid fa-folder-open"></i>
+          <span class="cmd-item-title">Explore Featured Projects</span>
+          <span class="cmd-item-badge">Section</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#skills">
+          <i class="fa-solid fa-code"></i>
+          <span class="cmd-item-title">Browse Verified Technical Skills</span>
+          <span class="cmd-item-badge">Section</span>
+        </div>
+        <div class="cmd-item" data-action="goto" data-target="#contact">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span class="cmd-item-title">Send a Message / Connect</span>
+          <span class="cmd-item-badge">Section</span>
+        </div>
 
-    /* ===== SCROLL ANIMATION (FADE + SLIDE) ===== */
-    const sections = document.querySelectorAll(".section, .project-card");
+        <div class="cmd-group-label">Live External Deployments</div>
+        <a href="https://orphanage-management-system-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item">
+          <i class="fa-solid fa-hands-holding-child" style="color: #f59e0b;"></i>
+          <span class="cmd-item-title">Launch Sushanti Children Home App (Vercel)</span>
+          <span class="cmd-item-badge live">External</span>
+        </a>
+        <a href="https://hybrid-online-secure-online-system.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item">
+          <i class="fa-solid fa-check-to-slot" style="color: #10b981;"></i>
+          <span class="cmd-item-title">Launch Voting App (Vercel Production)</span>
+          <span class="cmd-item-badge live">External</span>
+        </a>
+        <a href="https://indian-monument-prediction.onrender.com/" target="_blank" rel="noopener noreferrer" class="cmd-item">
+          <i class="fa-solid fa-landmark" style="color: #06b6d4;"></i>
+          <span class="cmd-item-title">Launch Monument Classifier (Render)</span>
+          <span class="cmd-item-badge live">External</span>
+        </a>
+        <a href="https://ziyakausar07.github.io/ziyakausar-portfolio/" target="_blank" rel="noopener noreferrer" class="cmd-item">
+          <i class="fa-brands fa-github" style="color: #a855f7;"></i>
+          <span class="cmd-item-title">Portfolio GitHub Pages</span>
+          <span class="cmd-item-badge live">External</span>
+        </a>
 
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                }
-            });
-        },
-        { threshold: 0.1 }
-    );
+        <div class="cmd-group-label">Actions</div>
+        <div class="cmd-item" data-action="copy-email">
+          <i class="fa-solid fa-copy"></i>
+          <span class="cmd-item-title">Copy Email (ziyakaus07@gmail.com)</span>
+          <span class="cmd-item-badge">Action</span>
+        </div>
+        <div class="cmd-item" data-action="toggle-theme">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+          <span class="cmd-item-title">Toggle Dark / Light Theme</span>
+          <span class="cmd-item-badge">Action</span>
+        </div>
+      </div>
 
-    sections.forEach(section => {
-        section.classList.add("hidden");
-        observer.observe(section);
-    });
+      <div class="cmd-footer">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+        <span><kbd>Enter</kbd> Select</span>
+        <span><kbd>ESC</kbd> Close</span>
+      </div>
+    </div>
+  </div>
 
-    /* ===== NAVBAR BACKGROUND ON SCROLL ===== */
-    window.addEventListener("scroll", () => {
-        const navbar = document.querySelector(".navbar");
-        if (window.scrollY > 50) {
-            navbar?.style.setProperty('background', 'rgba(13, 71, 161, 0.98)');
-        } else {
-            navbar?.style.setProperty('background', 'rgba(13, 71, 161, 0.95)');
-        }
-    });
-
-    /* ===== ACTIVE NAV LINK ON SCROLL ===== */
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll('[id]');
-        const scrollPosition = window.scrollY + 100;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-                
-                const activeLink = document.querySelector(`.nav-link[href="#${section.id}"]`);
-                activeLink?.classList.add('active');
-            }
-        });
-    });
-
-    /* ===== SCROLL TO TOP BUTTON ===== */
-    window.addEventListener('scroll', () => {
-        const scrollBtn = document.querySelector('.scroll-to-top');
-        if (scrollBtn) {
-            if (window.scrollY > 300) {
-                scrollBtn.style.opacity = '1';
-                scrollBtn.style.visibility = 'visible';
-            } else {
-                scrollBtn.style.opacity = '0';
-                scrollBtn.style.visibility = 'hidden';
-            }
-        }
-    });
-
-    /* ===== FORM VALIDATION & SUBMISSION ===== */
-    const form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Form submission logic here
-            alert('Thank you for your message! I will get back to you soon.');
-            form.reset();
-        });
-    }
-
-    /* ===== TYPING ANIMATION FOR HERO (Optional Enhancement) ===== */
-    function typeText(element, text, speed = 50) {
-        if (!element) return;
-        let index = 0;
-        element.textContent = '';
-        
-        function type() {
-            if (index < text.length) {
-                element.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, speed);
-            }
-        }
-        type();
-    }
-</script>
-
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
 </body>
 </html>
