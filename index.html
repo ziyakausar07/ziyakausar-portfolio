@@ -68,14 +68,8 @@
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
-      <!-- Right Actions (Terminal Cmd-K, Theme Toggle & Hamburger) -->
+      <!-- Right Actions (Theme Toggle & Hamburger) -->
       <div class="nav-actions">
-        <!-- Quick Command Palette Button -->
-        <button id="cmd-palette-toggle" class="cmd-k-btn" aria-label="Open Command Palette (Ctrl+K)" title="Developer Terminal (Ctrl + K)">
-          <i class="fa-solid fa-terminal" aria-hidden="true"></i>
-          <span class="cmd-kbd">Ctrl+K</span>
-        </button>
-
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to light theme" title="Toggle theme">
           <i class="fa-solid fa-sun" aria-hidden="true"></i>
         </button>
@@ -1381,83 +1375,6 @@
   <button id="floating-back-top" class="floating-back-top" aria-label="Scroll back to top of page" title="Back to top">
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
-
-  <!-- =======================================================
-       10. DEVELOPER COMMAND PALETTE (CTRL + K TERMINAL MODAL)
-       ======================================================= -->
-  <div id="cmd-palette-modal" class="cmd-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Developer Command Palette">
-    <div class="cmd-modal-dialog glass-card">
-      <div class="cmd-search-header">
-        <i class="fa-solid fa-terminal cmd-icon"></i>
-        <input type="text" id="cmd-input" placeholder="Type a command or jump to section (e.g., 'deploy', 'skills', 'projects', 'theme', 'copy email')..." autocomplete="off" spellcheck="false">
-        <button id="cmd-close-btn" class="cmd-close" aria-label="Close command palette">ESC</button>
-      </div>
-
-      <div class="cmd-results" id="cmd-results-list">
-        <div class="cmd-group-label">Quick Navigation</div>
-        <div class="cmd-item" data-action="goto" data-target="#deployments">
-          <i class="fa-solid fa-satellite-dish"></i>
-          <span class="cmd-item-title">Jump to Live Cloud Deployments</span>
-          <span class="cmd-item-badge">Section</span>
-        </div>
-        <div class="cmd-item" data-action="goto" data-target="#projects">
-          <i class="fa-solid fa-folder-open"></i>
-          <span class="cmd-item-title">Explore Featured Projects</span>
-          <span class="cmd-item-badge">Section</span>
-        </div>
-        <div class="cmd-item" data-action="goto" data-target="#skills">
-          <i class="fa-solid fa-code"></i>
-          <span class="cmd-item-title">Browse Verified Technical Skills</span>
-          <span class="cmd-item-badge">Section</span>
-        </div>
-        <div class="cmd-item" data-action="goto" data-target="#contact">
-          <i class="fa-solid fa-paper-plane"></i>
-          <span class="cmd-item-title">Send a Message / Connect</span>
-          <span class="cmd-item-badge">Section</span>
-        </div>
-
-        <div class="cmd-group-label">Live External Deployments</div>
-        <a href="https://orphanage-management-system-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item">
-          <i class="fa-solid fa-hands-holding-child" style="color: #f59e0b;"></i>
-          <span class="cmd-item-title">Launch Sushanti Children Home App (Vercel)</span>
-          <span class="cmd-item-badge live">External</span>
-        </a>
-        <a href="https://hybrid-online-secure-online-system.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item">
-          <i class="fa-solid fa-check-to-slot" style="color: #10b981;"></i>
-          <span class="cmd-item-title">Launch Voting App (Vercel Production)</span>
-          <span class="cmd-item-badge live">External</span>
-        </a>
-        <a href="https://indian-monument-prediction.onrender.com/" target="_blank" rel="noopener noreferrer" class="cmd-item">
-          <i class="fa-solid fa-landmark" style="color: #06b6d4;"></i>
-          <span class="cmd-item-title">Launch Monument Classifier (Render)</span>
-          <span class="cmd-item-badge live">External</span>
-        </a>
-        <a href="https://ziyakausar07.github.io/ziyakausar-portfolio/" target="_blank" rel="noopener noreferrer" class="cmd-item">
-          <i class="fa-brands fa-github" style="color: #a855f7;"></i>
-          <span class="cmd-item-title">Portfolio GitHub Pages</span>
-          <span class="cmd-item-badge live">External</span>
-        </a>
-
-        <div class="cmd-group-label">Actions</div>
-        <div class="cmd-item" data-action="copy-email">
-          <i class="fa-solid fa-copy"></i>
-          <span class="cmd-item-title">Copy Email (ziyakaus07@gmail.com)</span>
-          <span class="cmd-item-badge">Action</span>
-        </div>
-        <div class="cmd-item" data-action="toggle-theme">
-          <i class="fa-solid fa-circle-half-stroke"></i>
-          <span class="cmd-item-title">Toggle Dark / Light Theme</span>
-          <span class="cmd-item-badge">Action</span>
-        </div>
-      </div>
-
-      <div class="cmd-footer">
-        <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
-        <span><kbd>Enter</kbd> Select</span>
-        <span><kbd>ESC</kbd> Close</span>
-      </div>
-    </div>
-  </div>
 
   <!-- Scripts -->
   <script src="js/script.js"></script>

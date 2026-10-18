@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCodeStudio();
   initSkillsFilterAndSearch();
   initProjectFilters();
-  initCommandPalette();
   initCopyButtons();
   initContactForm();
   initResumeButton();
@@ -373,101 +372,7 @@ function initProjectFilters() {
   });
 }
 
-/* ---------------------------------------------------------
-   8. Developer Command Palette (Ctrl + K)
-   --------------------------------------------------------- */
-function initCommandPalette() {
-  const modal = document.getElementById('cmd-palette-modal');
-  const openBtn = document.getElementById('cmd-palette-toggle');
-  const closeBtn = document.getElementById('cmd-close-btn');
-  const input = document.getElementById('cmd-input');
-  const itemsContainer = document.getElementById('cmd-results-list');
 
-  if (!modal || !input) return;
-
-  function openPalette() {
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    input.value = '';
-    filterItems('');
-    setTimeout(() => input.focus(), 100);
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closePalette() {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  if (openBtn) {
-    openBtn.addEventListener('click', openPalette);
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closePalette);
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closePalette();
-  });
-
-  // Keyboard shortcut Ctrl + K / Cmd + K
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault();
-      if (modal.classList.contains('open')) {
-        closePalette();
-      } else {
-        openPalette();
-      }
-    } else if (e.key === 'Escape' && modal.classList.contains('open')) {
-      closePalette();
-    }
-  });
-
-  // Filter command items
-  input.addEventListener('input', (e) => {
-    filterItems(e.target.value.toLowerCase().trim());
-  });
-
-  function filterItems(query) {
-    const items = itemsContainer.querySelectorAll('.cmd-item');
-    items.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (!query || text.includes(query)) {
-        item.style.display = 'flex';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  }
-
-  // Handle Command Selection
-  itemsContainer.addEventListener('click', (e) => {
-    const item = e.target.closest('.cmd-item');
-    if (!item) return;
-
-    const action = item.getAttribute('data-action');
-    const target = item.getAttribute('data-target');
-
-    closePalette();
-
-    if (action === 'goto' && target) {
-      const targetEl = document.querySelector(target);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else if (action === 'copy-email') {
-      copyToClipboard('ziyakaus07@gmail.com');
-      showToast('Email copied: ziyakaus07@gmail.com');
-    } else if (action === 'toggle-theme') {
-      if (window.togglePortfolioTheme) {
-        window.togglePortfolioTheme();
-      }
-    }
-  });
-}
 
 /* ---------------------------------------------------------
    9. 1-Click Copy-to-Clipboard Buttons
