@@ -1225,6 +1225,12 @@ ul, ol {
   border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
+.portal-badge {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
 .deploy-status-pill {
   display: inline-flex;
   align-items: center;
