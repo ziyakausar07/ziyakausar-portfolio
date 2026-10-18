@@ -172,9 +172,10 @@ function initTypewriter() {
   const roles = [
     'Full-Stack Web Applications',
     'Applied ML & Computer Vision',
-    'Production Cloud Deployments',
+    'Frontend Web Development',
     'Scalable REST APIs & Databases',
-    'Secure Software Solutions'
+    'Secure Software Solutions',
+    'Software Testing & Quality Assurance'
   ];
 
   let roleIndex = 0;
