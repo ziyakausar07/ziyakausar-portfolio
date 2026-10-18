@@ -185,17 +185,17 @@
               </div>
               <div class="studio-tabs" role="tablist" aria-label="Code Studio Tabs">
                 <button class="studio-tab active" data-tab="profile" role="tab" aria-selected="true">
-                  <i class="fa-solid fa-user-astronaut"></i> developer.json
+                  <i class="fa-solid fa-code"></i> profile.ts
                 </button>
                 <button class="studio-tab" data-tab="stack" role="tab" aria-selected="false">
-                  <i class="fa-brands fa-react"></i> stack.config.ts
+                  <i class="fa-brands fa-react"></i> stack.ts
                 </button>
                 <button class="studio-tab" data-tab="deploy" role="tab" aria-selected="false">
-                  <i class="fa-solid fa-server"></i> live.deploy.env
+                  <i class="fa-solid fa-server"></i> deploy.env
                 </button>
               </div>
               <div class="studio-badge">
-                <span class="radar-ping"></span> Live Edge
+                <span class="radar-ping"></span> Live
               </div>
             </div>
 
@@ -205,16 +205,16 @@
               <div class="tab-pane active" id="pane-profile">
                 <pre class="code-block"><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
   <span class="code-prop">name</span>: <span class="code-string">"Ziyakausar J Tamboli"</span>,
-  <span class="code-prop">role</span>: <span class="code-string">"MCA Student &amp; Full-Stack Dev"</span>,
-  <span class="code-prop">academicRank</span>: <span class="code-string">"9.04 / 10 CGPA (BCA)"</span>,
-  <span class="code-prop">currentDegree</span>: <span class="code-string">"MCA @ Chetan Business School"</span>,
-  <span class="code-prop">activeDeployments</span>: [
-    <span class="code-string">"orphanage-management-system-iota.vercel.app"</span>,
-    <span class="code-string">"hybrid-online-secure-online-system.vercel.app"</span>,
-    <span class="code-string">"indian-monument-prediction.onrender.com"</span>,
-    <span class="code-string">"ziyakausar07.github.io/ziyakausar-portfolio"</span>
+  <span class="code-prop">role</span>: <span class="code-string">"MCA Candidate &amp; Full-Stack Dev"</span>,
+  <span class="code-prop">academic</span>: <span class="code-string">"MCA @ CBS (BCA 9.04 CGPA)"</span>,
+  <span class="code-prop">location</span>: <span class="code-string">"Hubli, Karnataka, India"</span>,
+  <span class="code-prop">liveApps</span>: [
+    <span class="code-string">"orphanage-sys.vercel.app"</span>,
+    <span class="code-string">"hybrid-voting.vercel.app"</span>,
+    <span class="code-string">"monument-ai.onrender.com"</span>,
+    <span class="code-string">"real-estate-portal"</span>
   ],
-  <span class="code-prop">status</span>: <span class="code-string">"🟢 Open for Internships &amp; Roles"</span>
+  <span class="code-prop">status</span>: <span class="code-string">"🟢 Open for Opportunities"</span>
 };</code></pre>
               </div>
 
@@ -233,14 +233,14 @@
               <!-- Tab 3: Live Deployments ENV -->
               <div class="tab-pane" id="pane-deploy">
                 <pre class="code-block"><code><span class="code-comment"># Production Cloud Environment</span>
-<span class="code-prop">PORTFOLIO_URL</span>=<span class="code-string">"ziyakausar07.github.io/ziyakausar-portfolio"</span>
-<span class="code-prop">ORPHANAGE_APP_URL</span>=<span class="code-string">"orphanage-management-system-iota.vercel.app"</span>
-<span class="code-prop">VOTING_APP_URL</span>=<span class="code-string">"hybrid-online-secure-online-system.vercel.app"</span>
-<span class="code-prop">MONUMENT_AI_URL</span>=<span class="code-string">"indian-monument-prediction.onrender.com"</span>
+<span class="code-prop">PORTFOLIO</span>    = <span class="code-string">"ziyakausar07.github.io"</span>
+<span class="code-prop">ORPHANAGE_APP</span>= <span class="code-string">"orphanage-sys.vercel.app"</span>
+<span class="code-prop">VOTING_APP</span>   = <span class="code-string">"hybrid-voting.vercel.app"</span>
+<span class="code-prop">MONUMENT_AI</span>  = <span class="code-string">"monument-prediction.onrender.com"</span>
 
-<span class="code-keyword">DEPLOY_STATUS</span>=<span class="code-string">"LIVE_AND_VERIFIED"</span>
-<span class="code-keyword">SSL_SECURITY</span>=<span class="code-string">"TLS_1.3_ENABLED"</span>
-<span class="code-keyword">UPTIME_TARGET</span>=<span class="code-string">"99.9%"</span></code></pre>
+<span class="code-keyword">DEPLOY_STATUS</span>= <span class="code-string">"LIVE_AND_VERIFIED"</span>
+<span class="code-keyword">SSL_SECURITY</span> = <span class="code-string">"TLS_1.3_ENABLED"</span>
+<span class="code-keyword">UPTIME</span>       = <span class="code-string">"99.9%_EDGE_CDN"</span></code></pre>
               </div>
             </div>
 
